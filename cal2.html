@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+ <html> 
+ <head> 
+         <title>Simple Calculator</title> 
+           <link rel="stylesheet" href="style.css">
+</head> 
+ <body>
+	<h2><b>Calculator</b></h2>
+     <center> <div class="calculator"> 
+	  <input type="text" class="display" id="display" disabled> <br>
+	  
+		  
+		  <br> <br>
+	  <button class="button" onclick="appendNumber('7')">7</button> 
+	  <button class="button" onclick="appendNumber('8')">8</button> 
+	  <button class="button" onclick="appendNumber('9')">9</button> 
+	  <button class="button" onclick="operate('*')">*</button> <br>
+	  <button class="button" onclick="appendNumber('4')">4</button>
+	  <button class="button" onclick="appendNumber('5')">5</button>
+	  <button class="button" onclick="appendNumber('6')">6</button>
+	  <button class="button" onclick="operate('-')" >-</button> <br>
+	  <button class="button" onclick="appendNumber('1')">1</button> 
+	  <button class="button" onclick="appendNumber('2')">2</button> 
+	  <button class="button" onclick="appendNumber('3')">3</button>
+	  <button class="button" onclick="operate('+')">+</button> <br> 
+	 
+	  <button class="button" onclick="appendNumber('0')">0</button>
+	  <button class="button" onclick="clearDisplay()">C</button> 
+	  <button class="button" onclick="calculate()">=</button>
+	  <button class="button" onclick="operate('/')">/</button>
+	    
+</div>
+ </center>
+<script> 
+          let currentInput = '';
+		  let operator = ''; 
+		  let previousInput = ''; 
+		  function appendNumber(number) 
+		  { 
+		    currentInput += number;
+			document.getElementById('display').value = currentInput; 
+		  } 
+		  function operate(op) { 
+		  if (currentInput !== '')
+		  { operator = op; previousInput = currentInput;
+		  currentInput = '';
+		  } }
+		  function calculate() {
+		  if (previousInput !== '' && currentInput !== '') 
+		  {
+ 		     currentInput = eval(previousInput + operator + currentInput).toString(); 
+			 document.getElementById('display').value = currentInput;
+			 previousInput = ''; operator = ''; 
+			 } }
+			 function clearDisplay() { 
+			 currentInput = ''; operator = '';
+			 previousInput = ''; document.getElementById('display').value = ''; 
+			 } 
+			 function calculatePercentage() 
+			 { if (currentInput !== '')
+			 { currentInput = (parseFloat(currentInput) / 100).toString(); 
+			 document.getElementById('display').value = currentInput; 
+			 } } 
+			 
+        
+			 
+</script> 
+</body> 
+</html>
